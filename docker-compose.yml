@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  db:
+    image: postgis/postgis:11-2.5-alpine
+    volumes:
+      - bluesky_db:/tmp/volumes/postgres
+    ports:
+      - "54320:5432"
+    env_file:
+      - local_setup/postgres.env
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+volumes:
+  bluesky_db:
